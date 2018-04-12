@@ -1,0 +1,134 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Fredericka+the+Great|Nanum+Myeongjo|Quicksand|Raleway" rel="stylesheet">
+    <link href="~/Content/w3.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+    <style>
+        h1, h2, h3, h4, h5, h6, th, tr, td, b, li {
+            font-family: Quicksand;
+        }
+
+        li {
+            font-size: larger;
+        }
+
+        b {
+            font-weight: 900;
+        }
+
+        #tx {
+            font-family: Cabin Sketch;
+        }
+
+        .btn-group-lg {
+            height: 46px;
+            line-height: 0.0;
+        }
+
+            .btn-group-lg > .btn, .btn-lg {
+                padding: .5rem 1rem;
+                font-size: 26pt;
+                line-height: 0;
+            }
+
+        .bg-mat {
+            background-color: rgb(255, 184, 106) !important;
+        }
+
+        .btn-group > #b1:hover {
+            /*background-color: rgb(189, 169, 153);*/
+            background-image: none;
+            color: black;
+        }
+
+        .headfont {
+            font-family: Fredericka the Great;
+            margin-left: 29px;
+            font-size: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <nav class="navbar navbar-expand-sm bg-mat navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <div style="display:inline-block"><img style="height:70px;" src="~/Content/img/logo.png" /></div>
+            </li>
+            <li><h2 class="headfont">@ViewBag.Title</h2></li>
+        </ul>
+    </nav>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="height:50px">
+        <div class="btn-group" style="margin: 5px;">
+            <div id="tx" style="margin: 5px;">
+                <div class="btn-group btn-group-lg" role="group">
+                    <button id="b1" type="button" class="btn btn-warning" value="Input Button" onclick=" relocate_Index()">Parks</button>
+                </div>
+                <div class="btn-group btn-group-lg" style="margin: 1px;" role="group">
+                    <button id="b1" type="button" class="btn btn-warning" value="Input Button" onclick=" relocate_FavoriteParks()">Top Parks</button>
+                </div>
+                <div class="btn-group btn-group-lg" role="group">
+                    <button id="b1" type="button" class="btn btn-warning" value="Input Button" onclick=" relocate_Survey()">Survey</button>
+                </div>
+                <div class="btn-group btn-group-lg" role="group">
+                    <button type="button" class="btn btn-warning" value="Input Button" onclick=" relocate_F()">ºF</button>
+                </div>
+                <div class="btn-group btn-group-lg" role="group">
+                    <button type="button" class="btn btn-warning" value="Input Button" onclick=" relocate_C()">ºC</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+        @RenderBody()
+    <div>
+    </div>
+
+
+    <script>
+
+        function relocate_Index() {
+            location.href = "@Url.Action("Index", "Home")";
+        }
+        function relocate_FavoriteParks() {
+            location.href = "@Url.Action("FavoriteParks", "Home")";
+        }
+        function relocate_Survey() {
+            location.href = "@Url.Action("Survey", "Home")";
+        }
+
+                function relocate_F() {
+            location.href = "@Url.Action("CelFer", new { oneORtwo = 1 })";
+        }
+                function relocate_C() {
+            location.href = "@Url.Action("CelFer", new { oneORtwo = 2 })";
+        }
+
+
+
+
+    </script>
+
+
+    @*<audio preload="auto" src="https://mataanabucar.github.io/The%20Lion%20King%20-%20Circle%20Of%20Life.mp3" loop="loop" controls autobuffer>
+            <embed src="https://mataanabucar.github.io/The%20Lion%20King%20-%20Circle%20Of%20Life.mp3" autoplay="false" width="450" height="300" name="MusicPlayer" id="MusicPlayer">
+        </audio>*@
+
+
+
+</body>
+</html>

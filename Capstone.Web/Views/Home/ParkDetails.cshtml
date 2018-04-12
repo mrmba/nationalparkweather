@@ -1,0 +1,247 @@
+﻿
+
+@using Capstone.Web.Models
+
+@model NPSClass
+
+@{ 
+    ViewBag.Title = "Park Details";
+
+    int cORf = (Int32)Session["C or F"];
+
+}
+
+
+
+<style>
+    .centerpic {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .wrap {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+
+    .flex-container2 {
+        display: flex;
+        /*background-color: rgb(209, 99, 25);*/
+    }
+
+    .card-body {
+        padding: 0px;
+    }
+
+    .badge {
+        font-size: 12pt;
+    }
+
+    .thin {
+        padding: .30rem 1.0rem;
+    }
+    /*.flex-container {
+        display: flex;
+        background-color: rgb(209, 99, 25);
+    }
+
+    .flex-container > div {
+        background-color: #FBD2A6;
+        margin: 10px;
+        padding: 20px;
+        border: 1px solid #CBBEB8;
+        -webkit-font-smoothing: antialiased;
+        box-shadow: 0px 0px 10px rgba(0, 0, 46, 0.568);
+        border-radius: 10px;
+    }*/
+
+    .flex-container {
+        display: flex;
+        background-image: url('../../Content/img/zionPArk.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+    }
+
+        .flex-container > div {
+            background-color: rgba(255, 206, 146, 0.37);
+            margin: 10px;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: 0px 0px 10px rgba(0, 0, 46, 0.568);
+            border-radius: 10px;
+        }
+
+    .img1 {
+        border: 1px solid #CBBEB8;
+        -webkit-font-smoothing: antialiased;
+        box-shadow: 0px 0px 10px rgba(0, 0, 46, 0.568);
+        padding: 0;
+        border-radius: 10px;
+    }
+
+    .forcast {
+        width: 60px;
+        height: auto;
+    }
+
+    .tablewidth {
+        width: 55%;
+        max-width: 55%;
+    }
+    .weather {
+        background-color: white ;
+        border: 1px solid white;
+        -webkit-font-smoothing: antialiased;
+        box-shadow: 0px 0px 10px rgba(0, 0, 46, 0.568);
+        
+        border-radius: 10px;
+    }
+    .table {
+        width: 390px;
+        margin-bottom: 1rem;
+        background-color: transparent;
+    }
+    .marge > div{
+        margin-bottom:10px;
+    }
+    .text {
+        color: #fff35d;
+        font-size: 13pt;
+        text-shadow: 0px 0px 20px black;
+    }
+</style>
+<div>
+
+</div>
+
+<div class="flex-container">
+    <div class="marge text" style="width:85%;">
+        <h4 style="margin-top:1px; text-align:center;">@Model.Park.ParkName</h4><br />
+        <img class="img1 centerpic" src="~/Content/img/parks/@(Model.Park.ParkCode +".jpg")" style="width: 450px;margin-top:-15px; height: auto" /><br />
+        <div><b>State: </b>@Model.Park.State</div>
+        <div><b>Climate: </b>@Model.Park.Climate</div>
+        <div><b>Description: </b>@Model.Park.ParkDescription</div>
+        <div><b>Quote: </b>"@Model.Park.InspirationalQuote"</div>
+        <div><b>By </b>@Model.Park.InspirationalQuoteSource</div>
+
+    </div>
+    <div style="width:100%;">
+        <ul class="list-group" >
+            <li class="list-group-item list-group-item-info">
+                Entry Fee:<span class="badge">
+                    @if (Model.Park.EntryFee == 0)
+                    {
+                        <span style="font-size:larger">Free</span>
+                    }
+                    else
+                    {
+                        <span>$</span>@Model.Park.EntryFee;
+                    }
+                </span>
+            </li>
+            <li class="list-group-item list-group-item-info">Elevation: <span class="badge">@(string.Format("{0:n0}", Model.Park.ElevationInFeet) + " ft") </span></li>
+            <li class="list-group-item list-group-item-info">Acreage: <span class="badge">@(string.Format("{0:n0}", Model.Park.Acreage)) </span></li>
+            <li class="list-group-item list-group-item-info">Annual Visitors: <span class="badge">@(string.Format("{0:n0}", Model.Park.AnnualVisitorCount)) </span></li>
+            <li class="list-group-item list-group-item-info">Total Miles Of Trail: <span class="badge">@(string.Format("{0:n0}", Model.Park.MilesOfTrail)) </span></li>
+            <li class="list-group-item list-group-item-info">Number Of Animal Species: <span class="badge">@Model.Park.NumberOfAnimalSpecies </span></li>
+            <li class="list-group-item list-group-item-info">Campsites: <span class="badge">@Model.Park.NumberOfCampsites </span></li>
+            <li class="list-group-item list-group-item-info">Year Founded: <span class="badge">@Model.Park.YearFounded </span></li>
+        </ul>
+        <div class="container weather" style="margin:12px auto;height: 312px ;max-width: 754px;">
+    <div class="card" style="height:259px;width:177px;float:left;margin-bottom:40px;margin-top: 20px;">
+        <div class="card-header" style="height: 50px;">
+            <h4 class="card-title">@Model.DateTimes[0].DayOfWeek</h4>
+        </div>
+        <img class="card-img-top" style="width:100px;height:auto" src="~/Content/img/weather/@(Model.AllWeather[0].Forecast.Replace(" ", string.Empty)+".png")">
+        <div class="card-footer" style="background-color:white; display:inline-block;height: 50px;">
+
+            <div class="card-text" style="float:left;">
+                @if (cORf == 1)
+                {
+                <b>Low:</b> <b>º</b>@Model.AllWeather[0].Low
+                }
+                @if (cORf==2)
+                {
+                <b>Low:</b> <b>º</b>@Model.AllWeather[0].Low_Celsius
+                }
+            </div> 
+            <div class="card-text" style="float:right">
+                @if (cORf == 1)
+                {
+                <b>High:</b> <b>º</b>@Model.AllWeather[0].High
+                }
+                @if (cORf==2)
+                {
+                <b>High:</b> <b>º</b>@Model.AllWeather[0].High_Celsius
+                }
+            </div>
+            <br /> <p>
+                @if (Model.AllWeather[0].Forecast == "thunderstorms" || Model.AllWeather[0].Forecast == "rain")
+                {
+                    <span>Watch out for storms</span>
+                }
+            </p>
+
+        </div>
+    </div>
+    <table class=" table table-bordered" style="margin:20px;">
+        <colgroup>
+            <col span="1">
+            <col span="1">
+            <col span="1">
+            <col span="1">
+        </colgroup>
+    
+
+        
+        <thead>
+          
+            <tr>
+                @for (int i = 1; i <= 4; i++)
+                {
+                    <th>@Model.DateTimes[i].DayOfWeek</th>
+                }
+            </tr>
+            <tr>
+                @for (int i = 1; i <= 4; i++)
+                {
+                    <th><img class="img1 forcast" src="~/Content/img/weather/@(Model.AllWeather[i].Forecast.Replace(" ", string.Empty)+".png")" /></th>
+                }
+            </tr>
+                
+        </thead>
+        <tbody>
+            <tr>
+                @for (int i = 1; i <= 4; i++)
+                {
+                    if (cORf == 1)
+                    {
+                <td><b>High:</b>  &deg;@Model.AllWeather[i].High <br /><b>Low:</b> &deg;@Model.AllWeather[i].Low</td>
+                    }
+                    if (cORf==2)
+                    {
+                <td><b>High:</b>  &deg;@Model.AllWeather[i].High_Celsius <br /><b>Low:</b>&deg;@Model.AllWeather[i].Low_Celsius</td>
+                    }
+
+                }
+            </tr>
+            @*<tr>
+                @for (int i = 1; i <= 4; i++)
+                {
+                <td style="word-break:break-all">@Model.AllWeather[i].Forecast.ToString();</td>
+                }
+            </tr>*@
+        </tbody>
+    </table>
+</div>
+    </div>
+</div>
+
+
+

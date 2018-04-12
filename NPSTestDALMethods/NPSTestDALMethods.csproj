@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Capstone.Web.Tests\Capstone.Web.Tests.csproj" />
+    <ProjectReference Include="..\Capstone.Web\Capstone.Web.csproj" />
+  </ItemGroup>
+
+</Project>

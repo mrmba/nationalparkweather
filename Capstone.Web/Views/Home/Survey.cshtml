@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = "Survey";
+
+}
+
+@using Capstone.Web.Models
+
+
+<style>
+    .dropdown-menu > li:hover {
+        background-color: springgreen;
+        background-image: none;
+        color: black;
+    }
+    .dropdown-menu {
+        border-radius: 0;
+    }
+
+    .btn-success.focus, .btn-success:hover {
+        box-shadow: 0 0 0 0.2rem rgba(40,167,69,.5);
+    }
+    .dropdown-toggle {
+        margin: 0px 17px;
+    }
+
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    /* First image (Logo. Full height) */
+    .bgimg-1 {
+        background-image: url('../../Content/img/yellowstone.gif');
+        min-height: 100%;
+    }
+    body, html {
+        height: 100%;
+        color: #777;
+        line-height: 1.8;
+    }
+    .scrollable-menu {
+        height: 39px;
+        margin-bottom: 4px;
+        max-height: 200px;
+        overflow-x: hidden;
+        padding: 0px 29px;
+    }
+
+        .scrollable-menu2 {
+        height: auto;
+        max-height: 136px;
+        overflow-x: hidden;
+        padding: 0px 29px;
+    }
+
+    .w3-display-middle {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+        .surveybox {
+            /*background-color: #FBD2A6;*/
+            background-color: rgba(255, 206, 146, 0.37);
+            margin: 10px;
+            padding: 20px;
+            /*font-size: 12px;*/
+            /*border: 1px solid #CBBEB8;*/
+            -webkit-font-smoothing: antialiased;
+            box-shadow: 0px 0px 10px rgba(0, 0, 46, 0.568);
+            border-radius: 10px;
+        }
+
+        
+</style>
+<script>
+    
+
+</script>
+
+    <div class=" bgimg-1 w3-display-container">
+        <div class="w3-display-middle surveybox" style="white-space:nowrap;">
+            <form method="post" action="@Url.Action("Survey", "Home")" name="survey">
+
+
+                <select name="parkName" class="btn btn-success scrollable-menu" style="display:inline-block">
+
+                    <option>Cuyahoga Valley National Park</option>
+                    <option>Everglades National Park</option>
+                    <option>Grand Canyon National Park</option>
+                    <option>Glacier National Park</option>
+                    <option>Great Smoky Mountains National Park</option>
+                    <option>Grand Teton National Park</option>
+                    <option>Mount Rainier National Park</option>
+                    <option>Rocky Mountain National Park</option>
+                    <option>Yellowstone National Park</option>
+                    <option>Yosemite National Park</option>
+
+                </select>
+
+                <select name="State" class="btn btn-success scrollable-menu" style="display:inline-block">
+                    <option> Alabama         </option>
+                    <option> Alaska          </option>
+                    <option> Arizona         </option>
+                    <option> Arkansas        </option>
+                    <option> California      </option>
+                    <option> Colorado        </option>
+                    <option> Connecticut     </option>
+                    <option> Delaware        </option>
+                    <option> Florida         </option>
+                    <option> Georgia         </option>
+                    <option> Hawaii          </option>
+                    <option> Idaho           </option>
+                    <option> Illinois        </option>
+                    <option> Indiana         </option>
+                    <option> Iowa            </option>
+                    <option> Kansas          </option>
+                    <option> Kentucky        </option>
+                    <option> Louisiana       </option>
+                    <option> Maine           </option>
+                    <option> Maryland        </option>
+                    <option> Massachusetts   </option>
+                    <option> Michigan        </option>
+                    <option> Minnesota       </option>
+                    <option> Mississippi     </option>
+                    <option> Missouri        </option>
+                    <option> Montana         </option>
+                    <option> Nebraska        </option>
+                    <option> Nevada          </option>
+                    <option> New Hampshire   </option>
+                    <option> New Jersey      </option>
+                    <option> New Mexico      </option>
+                    <option> New York        </option>
+                    <option> North Carolina  </option>
+                    <option> North Dakota    </option>
+                    <option> Ohio            </option>
+                    <option> Oklahoma        </option>
+                    <option> Oregon          </option>
+                    <option> Pennsylvania    </option>
+                    <option> Rhode Island    </option>
+                    <option> South Carolina  </option>
+                    <option> South Dakota    </option>
+                    <option> Tennessee       </option>
+                    <option> Texas           </option>
+                    <option> Utah            </option>
+                    <option> Vermont         </option>
+                    <option> Virginia        </option>
+                    <option> Washington      </option>
+                    <option> Washington DC   </option>
+                    <option> West Virginia   </option>
+                    <option> Wisconsin       </option>
+                    <option> Wyoming         </option>
+                </select>
+
+                <select name="ActivityLevel" class="btn btn-success scrollable-menu" style="display:inline-block">
+
+                    <option>Inactive</option>
+                    <option>Sedentary</option>
+                    <option>Active</option>
+                    <option>Extremely Active</option>
+
+                </select>
+
+         
+  
+
+
+                <div class="form" style="width:300px; display:inline-block">
+                    <div class="col-sm-3 mb-3" style="max-width: 100%;">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrepend">Email</span>
+                            </div>
+                            <input type="email" class="form-control" name="Email" id="validationDefault01" placeholder="abs@xyz.com" aria-describedby="inputGroupPrepend" required>
+                        </div>
+                    </div>
+                </div>
+
+
+                <button class="btn btn-success" style="display:inline-block;height: 39px; margin-bottom: 4px;" type="submit">Submit form</button>
+
+
+            </form>
+        </div>
+
+    </div>
+
+

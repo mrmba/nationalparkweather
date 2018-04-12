@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Parks";
+}
+
+@using Capstone.Web.Models
+@model List<Park>
+
+
+
+@*Home Page (Index) displays each park: photo, name, location, short summary*@
+
+<style>
+    .centerpic {
+        display: block;
+        /*margin-left: auto;
+        margin-right: auto;
+        width: 50%;*/
+    }
+
+    .badge {
+        font-size: 12pt;
+        white-space: normal;
+    }
+
+    .img1 {
+        /*border: 3px solid rgba(58, 58, 58, 0.42);*/
+        border: 1px solid rgba(152, 92, 56, 0.58);
+        -webkit-font-smoothing: antialiased;
+        box-shadow: 0 0 18px 7px black;
+        /*box-shadow: 0px 0px 10px rgba(0, 0, 46, 0.568);*/
+        padding: 0;
+        border-radius: 10px;
+    }
+
+    .flex-container {
+        display: flex;
+        background-image: url('../../Content/img/zionPArk.jpg');
+        /*background-color: rgb(209, 99, 25);*/
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .flex-container > div {
+        background-color: rgba(255, 206, 146, 0.37);
+        margin: 10px;
+        padding: 20px;
+        -webkit-font-smoothing: antialiased;
+        box-shadow: 0px 0px 10px rgba(0, 0, 46, 0.568);
+        border-radius: 10px;
+    }
+    #parkpic {
+        margin-top: 20px;
+        margin-right: 33px;
+    }
+    #dicrpi {
+        width: 77%;
+        margin-left: 36px;
+    }
+    body, html {
+        height: 100%;
+    }
+</style>
+
+@foreach (Park p in Model)
+{
+    <div class="flex-container">
+        <div style="width:100%;">
+            <a href="@Url.Action("ParkDetails", "Home", new { parkCode = p.ParkCode }, null)">
+                <img class="img1 centerpic" id="parkpic" style="float:left;height:250px;width:auto;" src="~/Content/img/parks/@(p.ParkCode +".jpg")" />
+            </a>
+
+            <br />
+
+            <div style="width:100%;">
+                <ul class="list-group" style="width: 65%;">
+                    <li class="list-group-item list-group-item-info">Park Name:<span class="badge"><span>@p.ParkName</span></span></li>
+                    <li class="list-group-item list-group-item-info">Location: <span class="badge"><span>@p.State</span></span></li>
+                    <li class="list-group-item list-group-item-info"><span style="float:left">Summary:</span> <span class="badge" id="dicrpi">@p.ParkDescription </span></li>
+                </ul>
+            </div>
+
+
+
+
+
+            @*<ul class="list-group" style="font-size:larger">
+
+            <li class="list-group-item list-group-item-light">Name: <span style="font-size:larger" class="badge">@p.ParkName </span></li>
+
+            <li class="list-group-item list-group-item-light">Elevation: <span style="font-size:larger" class="badge"> </span></li>
+            <li class="list-group-item list-group-item-light">Elevation: <span style="font-size:larger" class="badge"> </span></li>
+        </ul>*@
+            <br />
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+@*@foreach (Park p in Model)
+    {
+        <div style="float: left; margin-left: 15px; width: 1100px; height: auto;  background-color: lightgray">
+            <a href="@Url.Action("ParkDetails", "Home", new { parkCode = p.ParkCode }, null)">
+                <img src="~/Content/img/parks/@(p.ParkCode +".jpg")" style="width:500px; height: auto" />
+            </a>
+
+            <br />
+            <ul style="list-style-type: none">
+                <li>
+                    <b>Name:</b>@p.ParkName
+                </li>
+                <li>
+                    <b>Location:</b> @p.State
+                </li>
+                <li>
+                    <b>Summary:</b> @p.ParkDescription
+                </li>
+            </ul>
+            <br />
+        </div>
+    }*@
+
